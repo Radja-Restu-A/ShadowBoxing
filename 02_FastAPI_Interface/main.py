@@ -22,9 +22,11 @@ app.add_middleware(
 )
 
 try:
-    model = joblib.load('boxing_classifier.pkl')
+    model = joblib.load('01_Notebook_eksplorasi/boxing_classifier.pkl')
+    print("Model loaded successfully.")
 except FileNotFoundError:
     model = None
+    print("Model file not found. Please ensure the model is available at the specified path.")
 
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(static_image_mode=True, model_complexity=1, min_detection_confidence=0.7)
@@ -34,7 +36,7 @@ class GameState:
         self.health = 3
         self.score = 0
         self.current_move = None
-        self.moves = ['JAB', 'HOOK', 'UPPERCUT', 'OVERHAND']
+        self.moves = ['JAB', 'HOOK', 'UPPERCUT']
         self.generate_new_move()
         
     def generate_new_move(self):
@@ -161,7 +163,7 @@ async def reset_game():
 
 @app.get("/")
 async def get():
-    return HTMLResponse(open("boxing_game.html", encoding="utf-8").read())
+    return HTMLResponse(open("02_FastAPI_Interface/boxing_game.html", encoding="utf-8").read())
 
 if __name__ == "__main__":
     import uvicorn

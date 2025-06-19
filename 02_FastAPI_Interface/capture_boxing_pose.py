@@ -36,12 +36,11 @@ class BoxingPoseCaptureApp:
         self.panel = tk.Label(master)
         self.panel.pack()
         
-        self.boxing_moves = ['JAB', 'HOOK', 'UPPERCUT', 'OVERHAND']
+        self.boxing_moves = ['JAB', 'HOOK', 'UPPERCUT']
         self.gesture_colors = {
             'JAB': '#43a047',
             'HOOK': '#e53935',
-            'UPPERCUT': '#1e88e5',
-            'OVERHAND': '#fb8c00'
+            'UPPERCUT': '#1e88e5'
         }
         
         self.command_var = tk.StringVar(master)
